@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     /// resets to zero after every shot 
     /// </summary>
     public float TimeFromLastShot; 
-    public float ReloadTime;
+    public float ReloadTime = 3;
     /// <summary>
     /// "Bullet fired by this gun"
     /// </summary>
@@ -23,12 +23,9 @@ public class Gun : MonoBehaviour
     void Update()
     {
         TimeFromLastShot += Time.deltaTime;
-        if(Input.GetMouseButton(1) == true)
+        if(Input.GetMouseButton(0) == true && TimeFromLastShot >= ReloadTime)
         {
-            if(TimeFromLastShot >= ReloadTime)
-            {
-                Shoot();
-            }
+            Shoot();       
         }
     }
     void Shoot()
